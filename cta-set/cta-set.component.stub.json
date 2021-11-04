@@ -1,0 +1,27 @@
+{
+    "ctas": [
+        {
+            "label": "button disabled",
+            "disabled": true
+        },
+        {
+            "label": "anchor",
+            "href": "http://foo.com"
+        },
+        {
+            "label": "anchor disabled",
+            "href": "http://foo.com",
+            "disabled": true
+        },
+        {
+            "color": "primary",
+            "label": "anchor explicitly not disabled",
+            "href": "http://foo.com",
+            "disabled": false
+        },
+        {
+            "type": "submit",
+            "label": "submit"
+        }
+    ]
+}

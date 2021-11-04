@@ -1,0 +1,116 @@
+<!-- See notes in ./cta.component.ts -->
+
+<ng-template #buttonContents>
+    <ng-container *ngIf="cta.label; else contents">
+        {{ cta.label }}
+    </ng-container>
+    <ng-template #contents>
+        <ng-content></ng-content>
+    </ng-template>
+</ng-template>
+
+<ng-container *ngIf="ctaAnchor; else ctaButtonTemplate">
+    <ng-container [ngSwitch]="ctaAnchor.appearance">
+        <a
+            *ngSwitchCase="'flat'"
+            mat-flat-button
+            (click)="handleClick($event)"
+            [color]="ctaAnchor.color"
+            [disabled]="ctaAnchor.disabled"
+            [attr.href]="ctaAnchor.href"
+            [attr.rel]="ctaAnchor.rel"
+            [attr.target]="ctaAnchor.target"
+        >
+            <ng-container *ngTemplateOutlet="buttonContents"></ng-container>
+        </a>
+
+        <a
+            *ngSwitchCase="'raised'"
+            mat-raised-button
+            (click)="handleClick($event)"
+            [color]="ctaAnchor.color"
+            [disabled]="ctaAnchor.disabled"
+            [attr.href]="ctaAnchor.href"
+            [attr.rel]="ctaAnchor.rel"
+            [attr.target]="ctaAnchor.target"
+        >
+            <ng-container *ngTemplateOutlet="buttonContents"></ng-container>
+        </a>
+
+        <a
+            *ngSwitchCase="'stroked'"
+            mat-stroked-button
+            (click)="handleClick($event)"
+            [color]="ctaAnchor.color"
+            [disabled]="ctaAnchor.disabled"
+            [attr.href]="ctaAnchor.href"
+            [attr.rel]="ctaAnchor.rel"
+            [attr.target]="ctaAnchor.target"
+        >
+            <ng-container *ngTemplateOutlet="buttonContents"></ng-container>
+        </a>
+
+        <a
+            *ngSwitchDefault
+            mat-button
+            (click)="handleClick($event)"
+            [color]="ctaAnchor.color"
+            [disabled]="ctaAnchor.disabled"
+            [attr.href]="ctaAnchor.href"
+            [attr.rel]="ctaAnchor.rel"
+            [attr.target]="ctaAnchor.target"
+        >
+            <ng-container *ngTemplateOutlet="buttonContents"></ng-container>
+        </a>
+    </ng-container>
+</ng-container>
+
+<ng-template #ctaButtonTemplate>
+    <ng-container *ngIf="ctaButton">
+        <ng-container [ngSwitch]="ctaButton.appearance">
+            <button
+                *ngSwitchCase="'flat'"
+                mat-flat-button
+                (click)="handleClick($event)"
+                [color]="ctaButton.color"
+                [disabled]="ctaButton.disabled"
+                [attr.type]="ctaButton.type"
+            >
+                <ng-container *ngTemplateOutlet="buttonContents"></ng-container>
+            </button>
+
+            <button
+                *ngSwitchCase="'raised'"
+                mat-raised-button
+                (click)="handleClick($event)"
+                [color]="ctaButton.color"
+                [disabled]="ctaButton.disabled"
+                [attr.type]="ctaButton.type"
+            >
+                <ng-container *ngTemplateOutlet="buttonContents"></ng-container>
+            </button>
+
+            <button
+                *ngSwitchCase="'stroked'"
+                mat-stroked-button
+                (click)="handleClick($event)"
+                [color]="ctaButton.color"
+                [disabled]="ctaButton.disabled"
+                [attr.type]="ctaButton.type"
+            >
+                <ng-container *ngTemplateOutlet="buttonContents"></ng-container>
+            </button>
+
+            <button
+                *ngSwitchDefault
+                mat-button
+                (click)="handleClick($event)"
+                [color]="ctaButton.color"
+                [disabled]="ctaButton.disabled"
+                [attr.type]="ctaButton.type"
+            >
+                <ng-container *ngTemplateOutlet="buttonContents"></ng-container>
+            </button>
+        </ng-container>
+    </ng-container>
+</ng-template>

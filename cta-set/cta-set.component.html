@@ -1,0 +1,17 @@
+<ng-container *ngFor="let cta of ctas">
+    <cta
+        [ngClass]="[ctaCssClass || '', cta.cssClass || '']"
+        (trigger)="trigger.emit($event)"
+        [appearance]="cta.appearance"
+        [color]="cta.color"
+        [disabled]="cta.disabled"
+        [href]="cta.href"
+        [name]="cta.name"
+        [preventDefault]="cta.preventDefault"
+        [rel]="cta.rel"
+        [target]="cta.target"
+        [type]="cta.type"
+    >
+        {{ cta.label }}
+    </cta>
+</ng-container>
